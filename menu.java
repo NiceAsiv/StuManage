@@ -8,29 +8,29 @@ import java.awt.event.WindowEvent;
 public class menu extends JFrame implements ActionListener {
 
     JMenuBar mb = new JMenuBar();
-    JMenu m1 = new JMenu("å­¦ç”Ÿç®¡ç†");
-    JMenuItem mi1 = new JMenuItem("æ·»åŠ å­¦ç”Ÿ");
-    JMenuItem mi2 = new JMenuItem("åˆ é™¤å­¦ç”Ÿ");
-    JMenuItem mi11 = new JMenuItem("ä¿®æ”¹å­¦ç”Ÿ");
-    JMenu m2 = new JMenu("è¯¾ç¨‹ç®¡ç†");
-    JMenuItem mi3 = new JMenuItem("æ·»åŠ è¯¾ç¨‹");
-    JMenuItem mi4 = new JMenuItem("åˆ é™¤è¯¾ç¨‹");
-    JMenuItem mi12 = new JMenuItem("ä¿®æ”¹è¯¾ç¨‹");
-    JMenu m3 = new JMenu("é€‰è¯¾ç®¡ç†");
-    JMenuItem mi5 = new JMenuItem("é€‰è¯¾");
-    JMenuItem mi6 = new JMenuItem("é€€è¯¾");
-    JMenu m4 = new JMenu("æˆç»©ç®¡ç†");
-    JMenuItem mi7 = new JMenuItem("æŸ¥è¯¢æˆç»©");
-    JMenuItem mi8 = new JMenuItem("ä¿®æ”¹æˆç»©");
-    JMenu m5 = new JMenu("æŸ¥è¯¢ç®¡ç†");
-    JMenuItem mi9 = new JMenuItem("æ•°æ®åº“æŸ¥è¯¢");
-    JMenuItem mi10 = new JMenuItem("ç³»ç»Ÿé€€å‡º");
+    JMenu m1 = new JMenu("Ñ§Éú¹ÜÀí");
+    JMenuItem mi1 = new JMenuItem("Ìí¼ÓÑ§Éú");
+    JMenuItem mi2 = new JMenuItem("É¾³ıÑ§Éú");
+    JMenuItem mi11 = new JMenuItem("ĞŞ¸ÄÑ§Éú");
+    JMenu m2 = new JMenu("¿Î³Ì¹ÜÀí");
+    JMenuItem mi3 = new JMenuItem("Ìí¼Ó¿Î³Ì");
+    JMenuItem mi4 = new JMenuItem("É¾³ı¿Î³Ì");
+    JMenuItem mi12 = new JMenuItem("ĞŞ¸Ä¿Î³Ì");
+    JMenu m3 = new JMenu("Ñ¡¿Î¹ÜÀí");
+    JMenuItem mi5 = new JMenuItem("Ñ¡¿Î");
+    JMenuItem mi6 = new JMenuItem("ÍË¿Î");
+    JMenu m4 = new JMenu("³É¼¨¹ÜÀí");
+    JMenuItem mi7 = new JMenuItem("²éÑ¯³É¼¨");
+    JMenuItem mi8 = new JMenuItem("ĞŞ¸Ä³É¼¨");
+    JMenu m5 = new JMenu("²éÑ¯¹ÜÀí");
+    JMenuItem mi9 = new JMenuItem("Êı¾İ¿â²éÑ¯");
+    JMenuItem mi10 = new JMenuItem("ÏµÍ³ÍË³ö");
     Font t = new Font("sans-serif", Font.BOLD, 12);
     JPanel p = null;
     CardLayout cl = null;
 
     public menu() {
-        this.setTitle("å­¦ç”Ÿé€‰è¯¾ç®¡ç†ç³»ç»Ÿ");
+        this.setTitle("Ñ§ÉúÑ¡¿Î¹ÜÀíÏµÍ³");
         m1.add(mi1);
         m1.add(mi2);
         m1.add(mi11);
@@ -54,12 +54,12 @@ public class menu extends JFrame implements ActionListener {
         mb.add(m4);
         mb.add(m5);
         this.setJMenuBar(mb);
-        JLabel l = new JLabel("æ¬¢è¿ä½¿ç”¨é€‰è¯¾ç³»ç»Ÿpowered by Asiv",JLabel.CENTER);
+        JLabel l = new JLabel("»¶Ó­Ê¹ÓÃÑ¡¿ÎÏµÍ³powered by Asiv",JLabel.CENTER);
         // JLabel l1=new JLabel("powered by Asiv",JLabel.CENTER);
         l.setFont(new Font("sans-serif", Font.BOLD, 16));
         l.setHorizontalTextPosition(SwingConstants.CENTER);
         // l1.setHorizontalTextPosition(SwingConstants.CENTER);
-        // ç‚¹å‡»äº‹ä»¶
+        // µã»÷ÊÂ¼ş
         mi1.addActionListener(this);
         mi2.addActionListener(this);
         mi3.addActionListener(this);
@@ -83,23 +83,23 @@ public class menu extends JFrame implements ActionListener {
         DelSC delSC = new DelSC();
         UpdataC updataC = new UpdataC();
         UpdataStu updataStu = new UpdataStu();
-         UpdataSC updataSC = new UpdataSC(); // ä¿®æ”¹æˆç»©
+         UpdataSC updataSC = new UpdataSC(); // ĞŞ¸Ä³É¼¨
          getgrade Getgrade = new getgrade();
         Search search=new Search();//mi9
         //
-        p.add(l, "æ¬¢è¿ç•Œé¢");//add (string,component)è¦åœ¨JPanelé‡Œé¢å®ç°CardLayoutå¸ƒå±€ï¼Œéœ€è¦å°†ç»„ä»¶æ·»åŠ åˆ°JPanelé‡Œé¢ï¼Œç„¶åæ‰èƒ½åœ¨æ–¹æ³•ï¼ˆActionLisetenerï¼‰ä¸­å®ç°å¯¹å®¹å™¨ä¸­ç»„ä»¶çš„åˆ‡æ¢
-        // p.add(l1,"æ¬¢è¿ç•Œé¢");
-        p.add(addStu, "æ·»åŠ å­¦ç”Ÿç•Œé¢");
-        p.add(addC, "æ·»åŠ è¯¾ç¨‹ç•Œé¢");
-        p.add(addSC, "æ·»åŠ é€‰è¯¾ç•Œé¢");
-        p.add(delStu, "åˆ é™¤å­¦ç”Ÿç•Œé¢");
-        p.add(delC, "åˆ é™¤è¯¾ç¨‹ç•Œé¢");
-        p.add(delSC, "åˆ é™¤é€‰è¯¾ç•Œé¢");
-        p.add(updataC, "ä¿®æ”¹è¯¾ç¨‹ç•Œé¢");
-        p.add(updataStu, "ä¿®æ”¹å­¦ç”Ÿç•Œé¢");
-        p.add(updataSC, "ä¿®æ”¹æˆç»©ç•Œé¢");//mi8
-        p.add(search,"å­¦ç”Ÿæ•°æ®åº“æŸ¥è¯¢ç•Œé¢");
-        p.add(Getgrade,"æˆç»©æŸ¥è¯¢ç•Œé¢");//mi7
+        p.add(l, "»¶Ó­½çÃæ");//add (string,component)ÒªÔÚJPanelÀïÃæÊµÏÖCardLayout²¼¾Ö£¬ĞèÒª½«×é¼şÌí¼Óµ½JPanelÀïÃæ£¬È»ºó²ÅÄÜÔÚ·½·¨£¨ActionLisetener£©ÖĞÊµÏÖ¶ÔÈİÆ÷ÖĞ×é¼şµÄÇĞ»»
+        // p.add(l1,"»¶Ó­½çÃæ");
+        p.add(addStu, "Ìí¼ÓÑ§Éú½çÃæ");
+        p.add(addC, "Ìí¼Ó¿Î³Ì½çÃæ");
+        p.add(addSC, "Ìí¼ÓÑ¡¿Î½çÃæ");
+        p.add(delStu, "É¾³ıÑ§Éú½çÃæ");
+        p.add(delC, "É¾³ı¿Î³Ì½çÃæ");
+        p.add(delSC, "É¾³ıÑ¡¿Î½çÃæ");
+        p.add(updataC, "ĞŞ¸Ä¿Î³Ì½çÃæ");
+        p.add(updataStu, "ĞŞ¸ÄÑ§Éú½çÃæ");
+        p.add(updataSC, "ĞŞ¸Ä³É¼¨½çÃæ");//mi8
+        p.add(search,"Ñ§ÉúÊı¾İ¿â²éÑ¯½çÃæ");
+        p.add(Getgrade,"³É¼¨²éÑ¯½çÃæ");//mi7
         this.add(p, BorderLayout.CENTER);
         setVisible(true);
         setBounds(400, 150, 400, 280);
@@ -119,41 +119,41 @@ public class menu extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mi1) {
-            cl.show(p, "æ·»åŠ å­¦ç”Ÿç•Œé¢");
+            cl.show(p, "Ìí¼ÓÑ§Éú½çÃæ");
         }
         if (e.getSource() == mi2) {
-            cl.show(p, "åˆ é™¤å­¦ç”Ÿç•Œé¢");
+            cl.show(p, "É¾³ıÑ§Éú½çÃæ");
         }
         if (e.getSource() == mi3) {
-            cl.show(p, "æ·»åŠ è¯¾ç¨‹ç•Œé¢");
+            cl.show(p, "Ìí¼Ó¿Î³Ì½çÃæ");
         }
         if (e.getSource() == mi4) {
-            cl.show(p, "åˆ é™¤è¯¾ç¨‹ç•Œé¢");
+            cl.show(p, "É¾³ı¿Î³Ì½çÃæ");
         }
         if (e.getSource() == mi12) {
-            cl.show(p, "ä¿®æ”¹è¯¾ç¨‹ç•Œé¢");
+            cl.show(p, "ĞŞ¸Ä¿Î³Ì½çÃæ");
         }
         if (e.getSource() == mi5)
         {
-            cl.show(p, "æ·»åŠ é€‰è¯¾ç•Œé¢");
+            cl.show(p, "Ìí¼ÓÑ¡¿Î½çÃæ");
         }
         if (e.getSource() == mi6) {
-            cl.show(p, "åˆ é™¤é€‰è¯¾ç•Œé¢");
+            cl.show(p, "É¾³ıÑ¡¿Î½çÃæ");
         }
         if (e.getSource() == mi7) {
-            cl.show(p, "æˆç»©æŸ¥è¯¢ç•Œé¢");
+            cl.show(p, "³É¼¨²éÑ¯½çÃæ");
         }
         if (e.getSource() == mi8) {
-            cl.show(p, "ä¿®æ”¹æˆç»©ç•Œé¢");
+            cl.show(p, "ĞŞ¸Ä³É¼¨½çÃæ");
         }
         if (e.getSource() == mi10) {
             System.exit(0);
         }
         if (e.getSource() == mi9) {
-          cl.show(p,"å­¦ç”Ÿæ•°æ®åº“æŸ¥è¯¢ç•Œé¢");
+          cl.show(p,"Ñ§ÉúÊı¾İ¿â²éÑ¯½çÃæ");
         }
         if (e.getSource() == mi11) {
-            cl.show(p, "ä¿®æ”¹å­¦ç”Ÿç•Œé¢");
+            cl.show(p, "ĞŞ¸ÄÑ§Éú½çÃæ");
         }
     }
 }

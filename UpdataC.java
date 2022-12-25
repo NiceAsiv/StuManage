@@ -3,35 +3,35 @@ import java.awt.event.*;
 import java.sql.*;
 import javax.swing.*;
 
-//åº•å±‚é€»è¾‘éƒ½æ˜¯ç”¨åŒæ ·çš„æ¨¡æ¿å¤„ç†ä¸ä¸€æ ·çš„ä¸œè¥¿
-public class UpdataC extends JPanel implements ActionListener { //è¿™é‡Œä¹‹å‰å†™æˆjframeäº†,ç»“æœæ,ä¸èƒ½æŠŠjfameè£…è¿›å¦å¤–ä¸€ä¸ªJframe
+//µ×²ãÂß¼­¶¼ÊÇÓÃÍ¬ÑùµÄÄ£°å´¦Àí²»Ò»ÑùµÄ¶«Î÷
+public class UpdataC extends JPanel implements ActionListener { //ÕâÀïÖ®Ç°Ğ´³ÉjframeÁË,½á¹ûÄó,²»ÄÜ°Ñjfame×°½øÁíÍâÒ»¸öJframe
     JMenuBar mb = new JMenuBar();
     String save = null;
-    JTextField è¯¾å·1, è¯¾å·, è¯¾å;//è¯¾å·1æ˜¯ æŸ¥è¯¢çš„è¾“å…¥æ¡†
-    JButton ä¿®æ”¹, æŸ¥è¯¢;
+    JTextField ¿ÎºÅ1, ¿ÎºÅ, ¿ÎÃû;//¿ÎºÅ1ÊÇ ²éÑ¯µÄÊäÈë¿ò
+    JButton ĞŞ¸Ä, ²éÑ¯;
 
     public UpdataC() {
-        è¯¾å·1 = new JTextField(10);
-        è¯¾å· = new JTextField(10);
-        è¯¾å = new JTextField(10);
-        ä¿®æ”¹ = new JButton("ä¿®æ”¹");
-        æŸ¥è¯¢ = new JButton("æŸ¥è¯¢");
-        Box box1 = Box.createHorizontalBox();//æ¨ªå‘æ’åˆ—
+        ¿ÎºÅ1 = new JTextField(10);
+        ¿ÎºÅ = new JTextField(10);
+        ¿ÎÃû = new JTextField(10);
+        ĞŞ¸Ä = new JButton("ĞŞ¸Ä");
+        ²éÑ¯ = new JButton("²éÑ¯");
+        Box box1 = Box.createHorizontalBox();//ºáÏòÅÅÁĞ
         Box box2 = Box.createHorizontalBox();//
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
         Box box5 = Box.createHorizontalBox();
-        box1.add(new JLabel("è¯¾å·:", JLabel.CENTER));
-        box1.add(è¯¾å·);
-        box2.add(new JLabel("è¯¾å:", JLabel.CENTER));
-        box2.add(è¯¾å);
-        box3.add(ä¿®æ”¹);
-        box5.add(new JLabel("è¯¾å·:", JLabel.CENTER));
-        box5.add(è¯¾å·1);
-        box5.add(æŸ¥è¯¢);
-        ä¿®æ”¹.addActionListener(this);
-        æŸ¥è¯¢.addActionListener(this);
-        Box boxH = Box.createVerticalBox();//æ¨ªå‘æ’åˆ—
+        box1.add(new JLabel("¿ÎºÅ:", JLabel.CENTER));
+        box1.add(¿ÎºÅ);
+        box2.add(new JLabel("¿ÎÃû:", JLabel.CENTER));
+        box2.add(¿ÎÃû);
+        box3.add(ĞŞ¸Ä);
+        box5.add(new JLabel("¿ÎºÅ:", JLabel.CENTER));
+        box5.add(¿ÎºÅ1);
+        box5.add(²éÑ¯);
+        ĞŞ¸Ä.addActionListener(this);
+        ²éÑ¯.addActionListener(this);
+        Box boxH = Box.createVerticalBox();//ºáÏòÅÅÁĞ
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
@@ -42,9 +42,9 @@ public class UpdataC extends JPanel implements ActionListener { //è¿™é‡Œä¹‹å‰å†
         p.add(boxH);
         p1.add(box5);
         setLayout(new BorderLayout());
-        JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT, p1, p);//åˆ†å‰²çª—å£
+        JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT, p1, p);//·Ö¸î´°¿Ú
         add(jsp, BorderLayout.CENTER);
-        // setTitle("ä¿®æ”¹è¯¾ç¨‹");
+        // setTitle("ĞŞ¸Ä¿Î³Ì");
         // setSize(300, 300);
         // setVisible(true);
         // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,11 +54,11 @@ public class UpdataC extends JPanel implements ActionListener { //è¿™é‡Œä¹‹å‰å†
             ResultSet rs, rs1 = null;
             Connection con = null;
             String sql = null, sql1 = null;
-            if (e.getSource() == æŸ¥è¯¢) {
-                if (è¯¾å·1.getText().equals("")) {
-                    JOptionPane.showMessageDialog(this, "è¯¾å·ä¸èƒ½ä¸ºç©º", "æç¤º", JOptionPane.WARNING_MESSAGE);
+            if (e.getSource() == ²éÑ¯) {
+                if (¿ÎºÅ1.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "¿ÎºÅ²»ÄÜÎª¿Õ", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    sql1 = "select * from course where Cno='" + è¯¾å·1.getText() + "'";
+                    sql1 = "select * from course where Cno='" + ¿ÎºÅ1.getText() + "'";
 
                     System.out.println(sql1);
                     try {
@@ -66,11 +66,11 @@ public class UpdataC extends JPanel implements ActionListener { //è¿™é‡Œä¹‹å‰å†
                         Statement stmt = con.createStatement();
                         rs = stmt.executeQuery(sql1);
                         if (rs.next()) {
-                            è¯¾å·.setText(rs.getString("Cno").trim());
-                            è¯¾å.setText(rs.getString("Cname").trim());
-                            save = è¯¾å·1.getText().trim();
+                            ¿ÎºÅ.setText(rs.getString("Cno").trim());
+                            ¿ÎÃû.setText(rs.getString("Cname").trim());
+                            save = ¿ÎºÅ1.getText().trim();
                         } else {
-                            JOptionPane.showMessageDialog(this, "æ²¡æœ‰è¯¥è¯¾ç¨‹", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Ã»ÓĞ¸Ã¿Î³Ì", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                         }
 
                         stmt.close();
@@ -81,22 +81,22 @@ public class UpdataC extends JPanel implements ActionListener { //è¿™é‡Œä¹‹å‰å†
                     }
                 }
             }
-                    if (e.getSource() == ä¿®æ”¹) {
+                    if (e.getSource() == ĞŞ¸Ä) {
                         if (save == null) {
-                            JOptionPane.showMessageDialog(this, "è¯·å…ˆæŸ¥è¯¢", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "ÇëÏÈ²éÑ¯", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                         } else {
-                            sql= "update course set Cno='" + è¯¾å·.getText() + "',Cname='" + è¯¾å.getText() + "' where Cno='" + save + "'";
+                            sql= "update course set Cno='" + ¿ÎºÅ.getText() + "',Cname='" + ¿ÎÃû.getText() + "' where Cno='" + save + "'";
                             System.out.println(sql);
                             try {
                                 con = Tools.CONN();
-                                Statement stmt = con.createStatement();// åˆ›å»ºStatementå¯¹è±¡
-                                stmt.executeUpdate(sql);//æ‰§è¡Œsqlè¯­å¥
-                                save = null;//æ¸…ç©º
-                                JOptionPane.showMessageDialog(this, "ä¿®æ”¹æˆåŠŸ", "æç¤º", JOptionPane.WARNING_MESSAGE);
-                                è¯¾å·.setText("");
-                                è¯¾å.setText("");
-                                stmt.close();//å…³é—­Statement
-                                con.close();//å…³é—­Connection
+                                Statement stmt = con.createStatement();// ´´½¨Statement¶ÔÏó
+                                stmt.executeUpdate(sql);//Ö´ĞĞsqlÓï¾ä
+                                save = null;//Çå¿Õ
+                                JOptionPane.showMessageDialog(this, "ĞŞ¸Ä³É¹¦", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+                                ¿ÎºÅ.setText("");
+                                ¿ÎÃû.setText("");
+                                stmt.close();//¹Ø±ÕStatement
+                                con.close();//¹Ø±ÕConnection
                             } catch (SQLException e1) {
                                 System.out.print("SQL Exception occur.Message is:" + e1.getMessage());
                             }

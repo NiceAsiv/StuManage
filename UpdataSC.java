@@ -5,43 +5,43 @@ import javax.swing.*;
 public class UpdataSC extends JPanel implements ActionListener {
     String saveC = null;
     String saveS = null;
-    JTextField è¯¾å·1,å­¦å·1,å­¦å·,æˆç»©,è¯¾å·;
-    JButton ä¿®æ”¹,æŸ¥è¯¢;
+    JTextField ¿ÎºÅ1,Ñ§ºÅ1,Ñ§ºÅ,³É¼¨,¿ÎºÅ;
+    JButton ĞŞ¸Ä,²éÑ¯;
 
     UpdataSC()
     {
-        è¯¾å·1=new JTextField(10);//åœ¨æŸ¥è¯¢æ çš„å…ƒç´ 
-        å­¦å·1=new JTextField(10);//ç”¨æ¥æŸ¥è¯¢çš„å­¦å·
-        è¯¾å·=new JTextField(10);
-        å­¦å·=new JTextField(10);
-        æˆç»©=new JTextField(10);
-        ä¿®æ”¹=new JButton("ä¿®æ”¹");
-        æŸ¥è¯¢=new JButton("æŸ¥è¯¢");
+        ¿ÎºÅ1=new JTextField(10);//ÔÚ²éÑ¯À¸µÄÔªËØ
+        Ñ§ºÅ1=new JTextField(10);//ÓÃÀ´²éÑ¯µÄÑ§ºÅ
+        ¿ÎºÅ=new JTextField(10);
+        Ñ§ºÅ=new JTextField(10);
+        ³É¼¨=new JTextField(10);
+        ĞŞ¸Ä=new JButton("ĞŞ¸Ä");
+        ²éÑ¯=new JButton("²éÑ¯");
         Box box1=Box.createHorizontalBox();
         Box box2=Box.createHorizontalBox();
         Box box3=Box.createHorizontalBox();
         Box box4=Box.createHorizontalBox();
         Box box5=Box.createHorizontalBox();
-        box1.add(new JLabel("è¯¾å·:",JLabel.CENTER));
-        box1.add(è¯¾å·);
-        box2.add(new JLabel("å­¦å·:",JLabel.CENTER));
-        box2.add(å­¦å·);
-        box3.add(new JLabel("æˆç»©:",JLabel.CENTER));
-        box3.add(æˆç»©);
-        box4.add(ä¿®æ”¹);
-        box5.add(new JLabel("è¯¾å·:",JLabel.CENTER));
-        box5.add(è¯¾å·1);
-        box5.add(new JLabel("å­¦å·:",JLabel.CENTER));
-        box5.add(å­¦å·1);//ç”¨æ¥æŸ¥è¯¢çš„å­¦å·
-        box5.add(æŸ¥è¯¢);
-        Box boxH=Box.createVerticalBox();//æ¨ªå‘æ’åˆ—
+        box1.add(new JLabel("¿ÎºÅ:",JLabel.CENTER));
+        box1.add(¿ÎºÅ);
+        box2.add(new JLabel("Ñ§ºÅ:",JLabel.CENTER));
+        box2.add(Ñ§ºÅ);
+        box3.add(new JLabel("³É¼¨:",JLabel.CENTER));
+        box3.add(³É¼¨);
+        box4.add(ĞŞ¸Ä);
+        box5.add(new JLabel("¿ÎºÅ:",JLabel.CENTER));
+        box5.add(¿ÎºÅ1);
+        box5.add(new JLabel("Ñ§ºÅ:",JLabel.CENTER));
+        box5.add(Ñ§ºÅ1);//ÓÃÀ´²éÑ¯µÄÑ§ºÅ
+        box5.add(²éÑ¯);
+        Box boxH=Box.createVerticalBox();//ºáÏòÅÅÁĞ
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
         boxH.add(box4);
         boxH.add(Box.createVerticalGlue());
-        ä¿®æ”¹.addActionListener(this);
-        æŸ¥è¯¢.addActionListener(this);
+        ĞŞ¸Ä.addActionListener(this);
+        ²éÑ¯.addActionListener(this);
         JPanel p=new JPanel();
         JPanel p1=new JPanel();
         p.add(boxH);
@@ -52,11 +52,11 @@ public class UpdataSC extends JPanel implements ActionListener {
         validate();
     }
     public void actionPerformed(ActionEvent e) {
-        String sql1 = "select * from sc where Cno='" + è¯¾å·1.getText() + "' and Sno='" + å­¦å·1.getText() + "'";
+        String sql1 = "select * from sc where Cno='" + ¿ÎºÅ1.getText() + "' and Sno='" + Ñ§ºÅ1.getText() + "'";
         ResultSet rs1 = null, rs2 = null, rs3 = null, rs4 = null,rs=null;
-        if (e.getSource() == æŸ¥è¯¢) {
-            if (è¯¾å·1.getText().equals("") || å­¦å·1.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "è¯·è¾“å…¥è¯¾å·å’Œå­¦å·", "æç¤º", JOptionPane.WARNING_MESSAGE);
+        if (e.getSource() == ²éÑ¯) {
+            if (¿ÎºÅ1.getText().equals("") || Ñ§ºÅ1.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "ÇëÊäÈë¿ÎºÅºÍÑ§ºÅ", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
             } else {
                 try {
 
@@ -64,13 +64,13 @@ public class UpdataSC extends JPanel implements ActionListener {
                     Statement stmt = con.createStatement();
                     rs = stmt.executeQuery(sql1);
                     if (rs.next()) {
-                        å­¦å·.setText(rs.getString("Sno").trim());
-                        è¯¾å·.setText(rs.getString("Cno").trim());
-                        //æˆç»©.setText(rs.getString("grade").trim());
-                        saveC = è¯¾å·1.getText().trim();
-                        saveS = å­¦å·1.getText().trim();
+                        Ñ§ºÅ.setText(rs.getString("Sno").trim());
+                        ¿ÎºÅ.setText(rs.getString("Cno").trim());
+                        //³É¼¨.setText(rs.getString("grade").trim());
+                        saveC = ¿ÎºÅ1.getText().trim();
+                        saveS = Ñ§ºÅ1.getText().trim();
                     } else {
-                        JOptionPane.showMessageDialog(this, "æ²¡æœ‰è¿™ä¸ªè¯¾å·çš„å­¦ç”Ÿ", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Ã»ÓĞÕâ¸ö¿ÎºÅµÄÑ§Éú", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                     }
                     con.close();
                     stmt.close();
@@ -82,16 +82,16 @@ public class UpdataSC extends JPanel implements ActionListener {
 
             }
 
-        } else if (e.getSource() == ä¿®æ”¹) {
+        } else if (e.getSource() == ĞŞ¸Ä) {
             String sql = "delete from sc where Cno='" + saveC + "' and Sno='" + saveS + "'";
             if (saveC == null || saveS == null) {
-                JOptionPane.showMessageDialog(this, "è¯·å…ˆæŸ¥è¯¢", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ÇëÏÈ²éÑ¯", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
             } else {
                
-            sql1 = "select * from course where Cno='" + è¯¾å·.getText() + "'";
-            String sql2 = "select * from student where Sno='" + å­¦å·.getText() + "'";
-          //  String sql3 = "select * from sc where Cno='" + è¯¾å·.getText() + "' and Sno='" + å­¦å·.getText() + "'";
-            String sql4 = "update sc set Cno='"+è¯¾å·.getText()+"',Sno='"+å­¦å·.getText()+"',grade='"+æˆç»©.getText()+"' where Cno='"+saveC+"' and Sno='"+saveS+"'";
+            sql1 = "select * from course where Cno='" + ¿ÎºÅ.getText() + "'";
+            String sql2 = "select * from student where Sno='" + Ñ§ºÅ.getText() + "'";
+          //  String sql3 = "select * from sc where Cno='" + ¿ÎºÅ.getText() + "' and Sno='" + Ñ§ºÅ.getText() + "'";
+            String sql4 = "update sc set Cno='"+¿ÎºÅ.getText()+"',Sno='"+Ñ§ºÅ.getText()+"',grade='"+³É¼¨.getText()+"' where Cno='"+saveC+"' and Sno='"+saveS+"'";
                System.out.println(sql1);
                System.out.println(sql2);
               // System.out.println(sql3);
@@ -105,17 +105,17 @@ public class UpdataSC extends JPanel implements ActionListener {
                     if(rs2.next())
                     {
                             stmt.executeUpdate(sql4);
-                            JOptionPane.showMessageDialog(this,"ä¿®æ”¹æˆåŠŸ");
+                            JOptionPane.showMessageDialog(this,"ĞŞ¸Ä³É¹¦");
                             saveC=null;
                             saveS=null;
                     }
                     else {
-                        JOptionPane.showMessageDialog(this,"è¯¥å­¦ç”Ÿä¸å­˜åœ¨ï¼Œæ— æ³•ä¿®æ”¹");
+                        JOptionPane.showMessageDialog(this,"¸ÃÑ§Éú²»´æÔÚ£¬ÎŞ·¨ĞŞ¸Ä");
                     }
                     rs2.close();
                 }
                 else {
-                    JOptionPane.showMessageDialog(this,"è¯¥è¯¾ç¨‹ä¸å­˜åœ¨ï¼Œæ— æ³•ä¿®æ”¹");
+                    JOptionPane.showMessageDialog(this,"¸Ã¿Î³Ì²»´æÔÚ£¬ÎŞ·¨ĞŞ¸Ä");
                 }
                 rs1.close();
                 stmt.close();

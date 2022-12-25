@@ -5,46 +5,45 @@ import java.sql.*;
 import javax.lang.model.util.ElementScanner14;
 import javax.swing.*;
 
-import com.mysql.cj.exceptions.RSAException;
 public class DelStu extends JPanel implements ActionListener {
-    JTextField å­¦å·1, å­¦å·, å§“å,ç³»åˆ«,æ€§åˆ«;
-    JButton åˆ é™¤,æŸ¥è¯¢;
+    JTextField Ñ§ºÅ1, Ñ§ºÅ, ĞÕÃû,Ïµ±ğ,ĞÔ±ğ;
+    JButton É¾³ı,²éÑ¯;
     String save = null;
     DelStu() {
-        å­¦å·1 = new JTextField(10);
-        å­¦å· = new JTextField(10);
-        å§“å = new JTextField(10);
-        ç³»åˆ« = new JTextField(10);
-        æ€§åˆ« = new JTextField(10);
-        åˆ é™¤ = new JButton("åˆ é™¤");
-       æŸ¥è¯¢ = new JButton("æŸ¥æ‰¾");
-        Box box1 = Box.createHorizontalBox();//æ¨ªå‘æ’åˆ—
+        Ñ§ºÅ1 = new JTextField(10);
+        Ñ§ºÅ = new JTextField(10);
+        ĞÕÃû = new JTextField(10);
+        Ïµ±ğ = new JTextField(10);
+        ĞÔ±ğ = new JTextField(10);
+        É¾³ı = new JButton("É¾³ı");
+       ²éÑ¯ = new JButton("²éÕÒ");
+        Box box1 = Box.createHorizontalBox();//ºáÏòÅÅÁĞ
         Box box2 = Box.createHorizontalBox();
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
         Box box5 = Box.createHorizontalBox();
         Box box6 = Box.createHorizontalBox();
-        box1.add(new JLabel("å­¦å·:", JLabel.CENTER));
-        box1.add(å­¦å·);
-        box2.add(new JLabel("å§“å:", JLabel.CENTER));
-        box2.add(å§“å);
-        box3.add(new JLabel("ç³»åˆ«:", JLabel.CENTER));
-        box3.add(ç³»åˆ«);
-        box6.add(new JLabel("æ€§åˆ«:", JLabel.CENTER));
-        box6.add(æ€§åˆ«);
-        box4.add(åˆ é™¤);
-        box5.add(new JLabel("å­¦å·:", JLabel.CENTER));
-        box5.add(å­¦å·1);
-        box5.add(æŸ¥è¯¢);
-        Box boxH = Box.createVerticalBox();//æ¨ªå‘æ’åˆ—
+        box1.add(new JLabel("Ñ§ºÅ:", JLabel.CENTER));
+        box1.add(Ñ§ºÅ);
+        box2.add(new JLabel("ĞÕÃû:", JLabel.CENTER));
+        box2.add(ĞÕÃû);
+        box3.add(new JLabel("Ïµ±ğ:", JLabel.CENTER));
+        box3.add(Ïµ±ğ);
+        box6.add(new JLabel("ĞÔ±ğ:", JLabel.CENTER));
+        box6.add(ĞÔ±ğ);
+        box4.add(É¾³ı);
+        box5.add(new JLabel("Ñ§ºÅ:", JLabel.CENTER));
+        box5.add(Ñ§ºÅ1);
+        box5.add(²éÑ¯);
+        Box boxH = Box.createVerticalBox();//ºáÏòÅÅÁĞ
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
         boxH.add(box6);
         boxH.add(box4);
         boxH.add(Box.createVerticalGlue());
-        åˆ é™¤.addActionListener(this);
-       æŸ¥è¯¢.addActionListener(this);
+        É¾³ı.addActionListener(this);
+       ²éÑ¯.addActionListener(this);
         JPanel p = new JPanel();
         JPanel p1 = new JPanel();
         p.add(boxH);
@@ -56,29 +55,29 @@ public class DelStu extends JPanel implements ActionListener {
     }
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource()==æŸ¥è¯¢)
+            if(e.getSource()==²éÑ¯)
             {
-                if(å­¦å·1.getText().equals(""))
+                if(Ñ§ºÅ1.getText().equals(""))
                 {
-                    JOptionPane.showMessageDialog(this, "å­¦å·ä¸èƒ½ä¸ºç©º");
+                    JOptionPane.showMessageDialog(this, "Ñ§ºÅ²»ÄÜÎª¿Õ");
                 }
                 else{
-                    String sql1="select * from student where Sno='"+å­¦å·1.getText()+"'";
+                    String sql1="select * from student where Sno='"+Ñ§ºÅ1.getText()+"'";
                     try{
                         Connection con=Tools.CONN();
                         Statement stmt=con.createStatement();
                         ResultSet rs=stmt.executeQuery(sql1);
                         if(rs.next())
                         {
-                            å­¦å·.setText(rs.getString("Sno").trim());
-                            å§“å.setText(rs.getString("Sname").trim());
-                            ç³»åˆ«.setText(rs.getString("Sdept").trim());
-                            æ€§åˆ«.setText(rs.getString("Ssex").trim());
-                            save=å­¦å·1.getText().trim();
+                            Ñ§ºÅ.setText(rs.getString("Sno").trim());
+                            ĞÕÃû.setText(rs.getString("Sname").trim());
+                            Ïµ±ğ.setText(rs.getString("Sdept").trim());
+                            ĞÔ±ğ.setText(rs.getString("Ssex").trim());
+                            save=Ñ§ºÅ1.getText().trim();
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(this, "æ²¡æœ‰æ‰¾åˆ°è¯¥å­¦ç”Ÿ");
+                            JOptionPane.showMessageDialog(this, "Ã»ÓĞÕÒµ½¸ÃÑ§Éú");
                             stmt.close();
                             rs.close();
                             con.close();
@@ -93,11 +92,11 @@ public class DelStu extends JPanel implements ActionListener {
                 
            
             }
-            else if(e.getSource()==åˆ é™¤)
+            else if(e.getSource()==É¾³ı)
             {
                 if(save==null)
                 {
-                    JOptionPane.showMessageDialog(this, "è¯·å…ˆæŸ¥æ‰¾");
+                    JOptionPane.showMessageDialog(this, "ÇëÏÈ²éÕÒ");
                 }
                 else{
                     String sql2="delete from student where Sno='"+save+"'";
@@ -106,11 +105,11 @@ public class DelStu extends JPanel implements ActionListener {
                         Statement stmt=con.createStatement();
                         stmt.executeUpdate(sql2);
                         save=null;
-                        JOptionPane.showMessageDialog(this, "åˆ é™¤æˆåŠŸ");
-                        å­¦å·.setText("");
-                        å§“å.setText("");
-                        ç³»åˆ«.setText("");
-                        æ€§åˆ«.setText("");
+                        JOptionPane.showMessageDialog(this, "É¾³ı³É¹¦");
+                        Ñ§ºÅ.setText("");
+                        ĞÕÃû.setText("");
+                        Ïµ±ğ.setText("");
+                        ĞÔ±ğ.setText("");
                         stmt.close();
                         con.close();
                     }

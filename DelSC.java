@@ -7,40 +7,40 @@ import javax.swing.*;
 public class DelSC extends JPanel implements ActionListener{
 	String saveC=null;
 	String saveS=null;
-	JTextField è¯¾å·1,å­¦å·1,å­¦å·,æˆç»©,è¯¾å·;
-	JButton åˆ é™¤,æŸ¥è¯¢;
+	JTextField ¿ÎºÅ1,Ñ§ºÅ1,Ñ§ºÅ,³É¼¨,¿ÎºÅ;
+	JButton É¾³ı,²éÑ¯;
     DelSC()
     {
-     è¯¾å·1=new JTextField(10);
-        å­¦å·1=new JTextField(10);
-        å­¦å·=new JTextField(10);
-        è¯¾å·1=new JTextField(10);
-        è¯¾å·=new JTextField(10);
-        æˆç»©=new JTextField(10);
-        åˆ é™¤=new JButton("åˆ é™¤");
-        æŸ¥è¯¢=new JButton("æŸ¥è¯¢");
+     ¿ÎºÅ1=new JTextField(10);
+        Ñ§ºÅ1=new JTextField(10);
+        Ñ§ºÅ=new JTextField(10);
+        ¿ÎºÅ1=new JTextField(10);
+        ¿ÎºÅ=new JTextField(10);
+        ³É¼¨=new JTextField(10);
+        É¾³ı=new JButton("É¾³ı");
+        ²éÑ¯=new JButton("²éÑ¯");
         Box box1=Box.createHorizontalBox();
         Box box2=Box.createHorizontalBox();
         Box box3=Box.createHorizontalBox();
         Box box4=Box.createHorizontalBox();
         Box box5=Box.createHorizontalBox();
-        box1.add(new JLabel("è¯¾å·:",JLabel.CENTER));
-        box1.add(è¯¾å·);
-        box2.add(new JLabel("å­¦å·:",JLabel.CENTER));
-        box2.add(å­¦å·);
-        box4.add(åˆ é™¤);
-        box3.add(new JLabel("è¯¾å·:",JLabel.CENTER));
-        box3.add(è¯¾å·1);
-        box5.add(new JLabel("å­¦å·:",JLabel.CENTER));
-        box5.add(å­¦å·1);//ç”¨æ¥æŸ¥è¯¢çš„å­¦å·
-        box5.add(æŸ¥è¯¢);
-        Box boxH=Box.createVerticalBox();//æ¨ªå‘æ’åˆ—
+        box1.add(new JLabel("¿ÎºÅ:",JLabel.CENTER));
+        box1.add(¿ÎºÅ);
+        box2.add(new JLabel("Ñ§ºÅ:",JLabel.CENTER));
+        box2.add(Ñ§ºÅ);
+        box4.add(É¾³ı);
+        box3.add(new JLabel("¿ÎºÅ:",JLabel.CENTER));
+        box3.add(¿ÎºÅ1);
+        box5.add(new JLabel("Ñ§ºÅ:",JLabel.CENTER));
+        box5.add(Ñ§ºÅ1);//ÓÃÀ´²éÑ¯µÄÑ§ºÅ
+        box5.add(²éÑ¯);
+        Box boxH=Box.createVerticalBox();//ºáÏòÅÅÁĞ
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box4);
         boxH.add(Box.createVerticalGlue());
-        åˆ é™¤.addActionListener(this);
-        æŸ¥è¯¢.addActionListener(this);
+        É¾³ı.addActionListener(this);
+        ²éÑ¯.addActionListener(this);
         JPanel p=new JPanel();
         JPanel p1=new JPanel();
         p.add(boxH);
@@ -53,14 +53,14 @@ public class DelSC extends JPanel implements ActionListener{
     }
     public void actionPerformed(ActionEvent e)
     {  
-        String sql1="select * from sc where Cno='"+è¯¾å·1.getText()+"' and Sno='"+å­¦å·1.getText()+"'";
+        String sql1="select * from sc where Cno='"+¿ÎºÅ1.getText()+"' and Sno='"+Ñ§ºÅ1.getText()+"'";
         ResultSet rs1=null;
         ResultSet rs=null;
-        if(e.getSource()==æŸ¥è¯¢)
+        if(e.getSource()==²éÑ¯)
         {
-            if(è¯¾å·1.getText().equals("")||å­¦å·1.getText().equals(""))
+            if(¿ÎºÅ1.getText().equals("")||Ñ§ºÅ1.getText().equals(""))
             {
-                JOptionPane.showMessageDialog(this,"è¯·è¾“å…¥è¯¾å·å’Œå­¦å·","æç¤º",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,"ÇëÊäÈë¿ÎºÅºÍÑ§ºÅ","ÌáÊ¾",JOptionPane.WARNING_MESSAGE);
             }
             else
             {
@@ -71,15 +71,15 @@ public class DelSC extends JPanel implements ActionListener{
                     rs=stmt.executeQuery(sql1);
                     if(rs.next())
                     {
-                        å­¦å·.setText(rs.getString("Sno").trim());
-                        è¯¾å·.setText(rs.getString("Cno").trim());
-                        æˆç»©.setText(rs.getString("grade").trim());
-                        saveC=è¯¾å·1.getText().trim();
-                        saveS=å­¦å·1.getText().trim();
+                        Ñ§ºÅ.setText(rs.getString("Sno").trim());
+                        ¿ÎºÅ.setText(rs.getString("Cno").trim());
+                        ³É¼¨.setText(rs.getString("grade").trim());
+                        saveC=¿ÎºÅ1.getText().trim();
+                        saveS=Ñ§ºÅ1.getText().trim();
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(this,"æ²¡æœ‰è¿™ä¸ªè¯¾å·çš„å­¦ç”Ÿ","æç¤º",JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this,"Ã»ÓĞÕâ¸ö¿ÎºÅµÄÑ§Éú","ÌáÊ¾",JOptionPane.WARNING_MESSAGE);
                     }
                     con.close();
                     stmt.close();
@@ -92,19 +92,19 @@ public class DelSC extends JPanel implements ActionListener{
             }
 
         }
-        else if(e.getSource()==åˆ é™¤)
+        else if(e.getSource()==É¾³ı)
         {
             String sql="delete from sc where Cno='"+saveC+"' and Sno='"+saveS+"'";
             if(saveC==null||saveS==null)
             {
-                JOptionPane.showMessageDialog(this,"è¯·å…ˆæŸ¥è¯¢","æç¤º",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,"ÇëÏÈ²éÑ¯","ÌáÊ¾",JOptionPane.WARNING_MESSAGE);
             }
             else {
                 try {
                     Connection con = Tools.CONN();
                     Statement stmt = con.createStatement();
                     stmt.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(this, "åˆ é™¤æˆåŠŸ", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "É¾³ı³É¹¦", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                     con.close();
                     stmt.close();
                 } catch (SQLException e1) {

@@ -5,40 +5,40 @@ import java.util.Vector;
 
 import javax.swing.*;
 public class getStu extends JFrame {
-   Vector rowData = null;// å®šä¹‰ä¸€ä¸ªVectorå¯¹è±¡
-   Vector columnNames = null;// åˆ—å
-   JTable table=null; // å®šä¹‰ä¸€ä¸ªJTableå¯¹è±¡
-   String sql=null;// å®šä¹‰ä¸€ä¸ªStringå¯¹è±¡
+   Vector rowData = null;// ¶¨ÒåÒ»¸öVector¶ÔÏó
+   Vector columnNames = null;// ÁĞÃû
+   JTable table=null; // ¶¨ÒåÒ»¸öJTable¶ÔÏó
+   String sql=null;// ¶¨ÒåÒ»¸öString¶ÔÏó
     JScrollPane jsp=null;
-    PreparedStatement pstmt=null;// å®šä¹‰ä¸€ä¸ªPreparedStatementå¯¹è±¡
+    PreparedStatement pstmt=null;// ¶¨ÒåÒ»¸öPreparedStatement¶ÔÏó
     ResultSet rs=null;
     public getStu(String sql1) {
-        super("è¥¿ç”µå­¦ç”Ÿä¿¡æ¯");// è®¾ç½®çª—å£æ ‡é¢˜
-        columnNames = new Vector();// åˆ›å»ºä¸€ä¸ªVectorå¯¹è±¡
-        columnNames.add("å­¦å·");// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-        columnNames.add("å§“å");// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-        columnNames.add("ç³»åˆ«");// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-        columnNames.add("æ€§åˆ«");// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-        rowData = new Vector();// åˆ›å»ºä¸€ä¸ªVectorå¯¹è±¡
-        sql = sql1;// å°†sqlè¯­å¥èµ‹å€¼ç»™sqlå˜é‡
+        super("Î÷µçÑ§ÉúĞÅÏ¢");// ÉèÖÃ´°¿Ú±êÌâ
+        columnNames = new Vector();// ´´½¨Ò»¸öVector¶ÔÏó
+        columnNames.add("Ñ§ºÅ");// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+        columnNames.add("ĞÕÃû");// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+        columnNames.add("Ïµ±ğ");// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+        columnNames.add("ĞÔ±ğ");// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+        rowData = new Vector();// ´´½¨Ò»¸öVector¶ÔÏó
+        sql = sql1;// ½«sqlÓï¾ä¸³Öµ¸øsql±äÁ¿
         try {
-            Connection con = Tools.CONN();// è°ƒç”¨Toolsç±»ä¸­çš„CONNæ–¹æ³•
-            pstmt = con.prepareStatement(sql);// åˆ›å»ºä¸€ä¸ªPreparedStatementå¯¹è±¡
-            rs = pstmt.executeQuery();// åˆ›å»ºä¸€ä¸ªResultSetå¯¹è±¡
+            Connection con = Tools.CONN();// µ÷ÓÃToolsÀàÖĞµÄCONN·½·¨
+            pstmt = con.prepareStatement(sql);// ´´½¨Ò»¸öPreparedStatement¶ÔÏó
+            rs = pstmt.executeQuery();// ´´½¨Ò»¸öResultSet¶ÔÏó
             while (rs.next()) {
-                Vector row = new Vector();// åˆ›å»ºä¸€ä¸ªVectorå¯¹è±¡
-                row.add(rs.getString("Sno"));// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-                row.add(rs.getString("Sname"));// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-                row.add(rs.getString("Sdept"));// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-                row.add(rs.getString("Ssex"));// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
-                rowData.add(row);// å‘Vectorå¯¹è±¡ä¸­æ·»åŠ æ•°æ®
+                Vector row = new Vector();// ´´½¨Ò»¸öVector¶ÔÏó
+                row.add(rs.getString("Sno"));// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+                row.add(rs.getString("Sname"));// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+                row.add(rs.getString("Sdept"));// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+                row.add(rs.getString("Ssex"));// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
+                rowData.add(row);// ÏòVector¶ÔÏóÖĞÌí¼ÓÊı¾İ
     }
-    table = new JTable(rowData, columnNames);// åˆ›å»ºä¸€ä¸ªJTableå¯¹è±¡
-    jsp = new JScrollPane(table);// åˆ›å»ºä¸€ä¸ªJScrollPaneå¯¹è±¡
-    table.setEnabled(false);// è®¾ç½®JTableè¡¨æ ¼ä¸å¯ç¼–è¾‘
-    this.add(jsp);// å°†JScrollPaneå¯¹è±¡æ·»åŠ åˆ°çª—å£ä¸­
-    this.setSize(400, 300);// è®¾ç½®çª—å£å¤§å°
-    this.setVisible(true);// è®¾ç½®çª—å£å¯è§
+    table = new JTable(rowData, columnNames);// ´´½¨Ò»¸öJTable¶ÔÏó
+    jsp = new JScrollPane(table);// ´´½¨Ò»¸öJScrollPane¶ÔÏó
+    table.setEnabled(false);// ÉèÖÃJTable±í¸ñ²»¿É±à¼­
+    this.add(jsp);// ½«JScrollPane¶ÔÏóÌí¼Óµ½´°¿ÚÖĞ
+    this.setSize(400, 300);// ÉèÖÃ´°¿Ú´óĞ¡
+    this.setVisible(true);// ÉèÖÃ´°¿Ú¿É¼û
 }catch (SQLException e1) {
     System.out.print("SQL Exception occur.Message is:"+e1.getMessage());
     }

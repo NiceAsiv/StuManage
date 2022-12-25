@@ -6,16 +6,16 @@ import java.sql.*;
 
 class Tools {
     public static Connection CONN() {
-        String driverName = "com.mysql.cj.jdbc.Driver"; // åŠ è½½JDBCé©±åŠ¨
-        String dbURL = "jdbc:mysql://localhost:3306/course_pick_info"; // è¿æ¥æœåŠ¡å™¨å’Œæ•°æ®åº“testï¼Œæ­¤å¤„course_pick_infoæ˜¯æ•°æ®åº“å
-        String userName = "asiv"; // ç”¨æˆ·åasiv
-        String userPwd = "123456"; // å¯†ç 
-        Connection dbConn = null;// åˆ›å»ºä¸€ä¸ªConnectionå¯¹è±¡
+        String driverName = "com.mysql.cj.jdbc.Driver"; // ¼ÓÔØJDBCÇı¶¯
+        String dbURL = "jdbc:mysql://localhost:3306/course_pick_info"; // Á¬½Ó·şÎñÆ÷ºÍÊı¾İ¿âtest£¬´Ë´¦course_pick_infoÊÇÊı¾İ¿âÃû
+        String userName = "asiv"; // ÓÃ»§Ãûasiv
+        String userPwd = "123456"; // ÃÜÂë
+        Connection dbConn = null;// ´´½¨Ò»¸öConnection¶ÔÏó
         try {
-            Class.forName(driverName);// æ³¨å†Œé©±åŠ¨
-            dbConn = DriverManager.getConnection(dbURL, userName, userPwd);// è·å–æ•°æ®åº“çš„è¿æ¥å¯¹è±¡
+            Class.forName(driverName);// ×¢²áÇı¶¯
+            dbConn = DriverManager.getConnection(dbURL, userName, userPwd);// »ñÈ¡Êı¾İ¿âµÄÁ¬½Ó¶ÔÏó
             System.out.println("Connection Successful!");
-            // å¦‚æœè¿æ¥æˆåŠŸ æ§åˆ¶å°è¾“å‡ºConnection Successful!
+            // Èç¹ûÁ¬½Ó³É¹¦ ¿ØÖÆÌ¨Êä³öConnection Successful!
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,27 +24,27 @@ class Tools {
 }
 public class User extends JFrame {
     private JLabel user, password;
-    private JTextField k1;// ç”¨æˆ·åè¾“å…¥æ¡†
-    private JPasswordField k2;// å¯†ç è¾“å…¥æ¡†
-    private JButton login, exit;// ç™»å½•æŒ‰é’®ï¼Œæ³¨å†ŒæŒ‰é’®
+    private JTextField k1;// ÓÃ»§ÃûÊäÈë¿ò
+    private JPasswordField k2;// ÃÜÂëÊäÈë¿ò
+    private JButton login, exit;// µÇÂ¼°´Å¥£¬×¢²á°´Å¥
 
-    // ç™»å½•çª—å£æ„é€ å‡½æ•°
+    // µÇÂ¼´°¿Ú¹¹Ôìº¯Êı
     public User() {
-        super("ç³»ç»Ÿç™»å½•");  //è®¾ ç½®çª—å£æ ‡é¢˜
+        super("ÏµÍ³µÇÂ¼");  //Éè ÖÃ´°¿Ú±êÌâ
         Container c = getContentPane();
-        c.setLayout(new FlowLayout()); // è®¾ç½®çª—å£å¸ƒå±€ä¸ºæµå¼å¸ƒå±€
-        user = new JLabel("ç”¨æˆ·åï¼š");
+        c.setLayout(new FlowLayout()); // ÉèÖÃ´°¿Ú²¼¾ÖÎªÁ÷Ê½²¼¾Ö
+        user = new JLabel("ÓÃ»§Ãû£º");
         user.setFont(new Font("Serif", Font.PLAIN, 20));
-        password = new JLabel("ç™»å½•å¯†ç ï¼š");
+        password = new JLabel("µÇÂ¼ÃÜÂë£º");
         password.setFont(new Font("Serif", Font.PLAIN, 20));
-        k1 = new JTextField(12);// ç”¨æˆ·åè¾“å…¥æ¡†
-        k2 = new JPasswordField(10);// å¯†ç è¾“å…¥æ¡†
-        login = new JButton("ç™»å½•");
-        exit = new JButton("é€€å‡º");
-        LoginListener l = new LoginListener();// åˆ›å»ºç™»å½•ç›‘å¬å™¨
-        ExitListener e = new ExitListener();// åˆ›å»ºé€€å‡ºç›‘å¬å™¨
-        login.addActionListener(l);// ä¸ºç™»å½•æŒ‰é’®æ·»åŠ ç›‘å¬å™¨
-        exit.addActionListener(e);// ä¸ºé€€å‡ºæŒ‰é’®æ·»åŠ ç›‘å¬å™¨
+        k1 = new JTextField(12);// ÓÃ»§ÃûÊäÈë¿ò
+        k2 = new JPasswordField(10);// ÃÜÂëÊäÈë¿ò
+        login = new JButton("µÇÂ¼");
+        exit = new JButton("ÍË³ö");
+        LoginListener l = new LoginListener();// ´´½¨µÇÂ¼¼àÌıÆ÷
+        ExitListener e = new ExitListener();// ´´½¨ÍË³ö¼àÌıÆ÷
+        login.addActionListener(l);// ÎªµÇÂ¼°´Å¥Ìí¼Ó¼àÌıÆ÷
+        exit.addActionListener(e);// ÎªÍË³ö°´Å¥Ìí¼Ó¼àÌıÆ÷
         c.add(user);
         c.add(k1);
         c.add(password);
@@ -57,10 +57,11 @@ public class User extends JFrame {
 
     }
 
-    private class LoginListener implements ActionListener {// ç™»å½•ç›‘å¬å™¨
+    private class LoginListener implements ActionListener {// µÇÂ¼¼àÌıÆ÷
+
         public void actionPerformed(ActionEvent e) {
             if (k1.getText().equals("") || k2.getPassword().equals("")) {
-                JOptionPane.showMessageDialog(null, "ç”¨æˆ·åæˆ–å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
+                JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû»òÃÜÂë²»ÄÜÎª¿Õ£¡");
             } else {
                 try {
                     Connection con = Tools.CONN();
@@ -69,11 +70,11 @@ public class User extends JFrame {
                    // System.out.println(sql);
                     ResultSet rs = stmt.executeQuery(sql);
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "ç™»å½•æˆåŠŸï¼");
-                        new menu();// è·³è½¬è‡³èœå•çª—å£
-                        dispose();// å…³é—­çª—å£
+                        JOptionPane.showMessageDialog(null, "µÇÂ¼³É¹¦£¡");
+                        new menu();// Ìø×ªÖÁ²Ëµ¥´°¿Ú
+                        dispose();// ¹Ø±Õ´°¿Ú
                     } else {
-                        JOptionPane.showMessageDialog(null, "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
+                        JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû»òÃÜÂë´íÎó£¡");
                     }
                     rs.close();
                     stmt.close();
@@ -82,12 +83,11 @@ public class User extends JFrame {
                     JOptionPane.showMessageDialog(User.this, "SQL Exception occur.Message is:" + ex.getMessage());
                 }
 
-            }
-
         }
     }
+    }
 
-    private class ExitListener implements ActionListener {// é€€å‡ºç›‘å¬å™¨
+    private class ExitListener implements ActionListener {// ÍË³ö¼àÌıÆ÷
         public void actionPerformed(ActionEvent e) {
             dispose();
         }

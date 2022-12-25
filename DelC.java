@@ -4,53 +4,53 @@ import java.sql.*;
 import javax.swing.*;
 
 public class DelC extends JPanel implements ActionListener {
-    JTextField è¯¾å·1,è¯¾å·,è¯¾å;
-    JButton æŸ¥è¯¢,åˆ é™¤;
+    JTextField ¿ÎºÅ1,¿ÎºÅ,¿ÎÃû;
+    JButton ²éÑ¯,É¾³ı;
     String saveString=null;
   public DelC() {
-        è¯¾å·1=new JTextField(10);
-        è¯¾å·=new JTextField(10);
-        è¯¾å=new JTextField(10);
-        æŸ¥è¯¢=new JButton("æŸ¥è¯¢");
-        åˆ é™¤=new JButton("åˆ é™¤");
+        ¿ÎºÅ1=new JTextField(10);
+        ¿ÎºÅ=new JTextField(10);
+        ¿ÎÃû=new JTextField(10);
+        ²éÑ¯=new JButton("²éÑ¯");
+        É¾³ı=new JButton("É¾³ı");
         Box box1=Box.createHorizontalBox();
         Box box2=Box.createHorizontalBox();
         Box box3=Box.createHorizontalBox();
         Box box4=Box.createHorizontalBox();
         Box box5=Box.createHorizontalBox();
-        box1.add(new JLabel("è¯¾å·:",JLabel.CENTER));
-        box1.add(è¯¾å·);
-        box2.add(new JLabel("è¯¾å:",JLabel.CENTER));
-        box2.add(è¯¾å);
+        box1.add(new JLabel("¿ÎºÅ:",JLabel.CENTER));
+        box1.add(¿ÎºÅ);
+        box2.add(new JLabel("¿ÎÃû:",JLabel.CENTER));
+        box2.add(¿ÎÃû);
 
-        box4.add(åˆ é™¤);
-        box5.add(new JLabel("è¯¾å·:",JLabel.CENTER));
-        box5.add(è¯¾å·1);
-        box5.add(æŸ¥è¯¢);
-        Box boxH=Box.createVerticalBox();//æ¨ªå‘æ’åˆ—
+        box4.add(É¾³ı);
+        box5.add(new JLabel("¿ÎºÅ:",JLabel.CENTER));
+        box5.add(¿ÎºÅ1);
+        box5.add(²éÑ¯);
+        Box boxH=Box.createVerticalBox();//ºáÏòÅÅÁĞ
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
         boxH.add(box4);
         boxH.add(box5);
         boxH.add(Box.createVerticalGlue());
-        åˆ é™¤.addActionListener(this);
-        æŸ¥è¯¢.addActionListener(this);
+        É¾³ı.addActionListener(this);
+        ²éÑ¯.addActionListener(this);
         JPanel p=new JPanel();
         JPanel p1=new JPanel();
         p.add(boxH);
         p1.add(box5);
         setLayout(new BorderLayout());
-        JSplitPane splitV=new JSplitPane(JSplitPane.VERTICAL_SPLIT,p1,p);//å‚ç›´åˆ†å‰²
+        JSplitPane splitV=new JSplitPane(JSplitPane.VERTICAL_SPLIT,p1,p);//´¹Ö±·Ö¸î
         add(splitV,BorderLayout.CENTER);
         validate();
 }
     @Override
     public void actionPerformed(ActionEvent e) {
-        String sql1="select * from course where Cno='"+è¯¾å·1.getText()+"'";
-        if (e.getSource() == æŸ¥è¯¢) {
-            if (è¯¾å·1.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "è¯¾å·ä¸èƒ½ä¸ºç©º", "æç¤º", JOptionPane.WARNING_MESSAGE);
+        String sql1="select * from course where Cno='"+¿ÎºÅ1.getText()+"'";
+        if (e.getSource() == ²éÑ¯) {
+            if (¿ÎºÅ1.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "¿ÎºÅ²»ÄÜÎª¿Õ", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                 }
             else
             {
@@ -59,12 +59,12 @@ public class DelC extends JPanel implements ActionListener {
                 Statement stmt=con.createStatement();
                 ResultSet rs=stmt.executeQuery(sql1);
                 if(rs.next()){
-                    è¯¾å·.setText(rs.getString("Cno").trim());
-                    è¯¾å.setText(rs.getString("Cname").trim());
-                    saveString=è¯¾å·1.getText().trim();
+                    ¿ÎºÅ.setText(rs.getString("Cno").trim());
+                    ¿ÎÃû.setText(rs.getString("Cname").trim());
+                    saveString=¿ÎºÅ1.getText().trim();
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "æ²¡æœ‰è¯¥è¯¾ç¨‹", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Ã»ÓĞ¸Ã¿Î³Ì", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
                 }
             
                stmt.close();
@@ -76,22 +76,22 @@ public class DelC extends JPanel implements ActionListener {
             }
             }
         }
-        else if(e.getSource()==åˆ é™¤){
+        else if(e.getSource()==É¾³ı){
             String sql="delete from course where Cno='"+saveString+"'";
             if(saveString==null){
-                JOptionPane.showMessageDialog(this, "è¯·å…ˆæŸ¥è¯¢", "æç¤º", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ÇëÏÈ²éÑ¯", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
             }
             else{
                 try{
                 Connection con=Tools.CONN();
-                Statement stmt=con.createStatement();// åˆ›å»ºStatementå¯¹è±¡
-                stmt.executeUpdate(sql);//æ‰§è¡Œsqlè¯­å¥
-                saveString=null;//æ¸…ç©º
-                JOptionPane.showMessageDialog(this, "åˆ é™¤æˆåŠŸ", "æç¤º", JOptionPane.WARNING_MESSAGE);
-                è¯¾å·.setText("");
-                è¯¾å.setText("");
-                stmt.close();//å…³é—­Statement
-                con.close();//å…³é—­Connection
+                Statement stmt=con.createStatement();// ´´½¨Statement¶ÔÏó
+                stmt.executeUpdate(sql);//Ö´ĞĞsqlÓï¾ä
+                saveString=null;//Çå¿Õ
+                JOptionPane.showMessageDialog(this, "É¾³ı³É¹¦", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+                ¿ÎºÅ.setText("");
+                ¿ÎÃû.setText("");
+                stmt.close();//¹Ø±ÕStatement
+                con.close();//¹Ø±ÕConnection
                 }
                 catch(SQLException e1){
                     System.out.print("SQL Exception occur.Message is:"+e1.getMessage());

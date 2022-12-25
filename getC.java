@@ -13,20 +13,20 @@ public class getC extends JFrame{
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     public getC(String sql1) {
-        super("鏌ヨ璇剧▼淇℃伅");
+        super("查询课程信息");
         columnNames = new Vector();
-        columnNames.add("璇惧彿");
-        columnNames.add("璇惧悕");
-        columnNames.add("瀛﹀垎");
+        columnNames.add("课号");
+        columnNames.add("课名");
+        columnNames.add("学分");
         rowData = new Vector();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);// 璁剧疆绐楀彛鍙
-        sql = sql1;// 鑾峰彇鏌ヨ璇彞
+        setVisible(true);// 设置窗口可见
+        sql = sql1;// 获取查询语句
         try {
 
-            Connection con = Tools.CONN();// 璋冪敤Tools绫讳腑鐨凜ONN鏂规硶
-            pstmt = con.prepareStatement(sql);// 鍒涘缓涓�涓狿reparedStatement瀵硅薄
-            rs = pstmt.executeQuery();// 鍒涘缓涓�涓猂esultSet瀵硅薄
+            Connection con = Tools.CONN();// 调用Tools类中的CONN方法
+            pstmt = con.prepareStatement(sql);// 创建一个PreparedStatement对象
+            rs = pstmt.executeQuery();// 创建一个ResultSet对象
             while (rs.next()) {
                 Vector row = new Vector();
                 row.add(rs.getString("Cno"));

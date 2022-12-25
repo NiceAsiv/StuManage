@@ -5,57 +5,57 @@ import java.awt.event.*;
 import java.sql.*;
 import javax.swing.*;
 
-public class Search extends JPanel implements ActionListener {//ä»¥ä»»æ„æ¡ä»¶æ¨¡ç³ŠæŸ¥æ‰¾ç›¸å…³çš„è¡¨
-    JTextField  å­¦å·,å§“å,ç³»åˆ«,æ€§åˆ«;
-    JButton æŸ¥è¯¢å­¦ç”Ÿ;
-    JTextField è¯¾å·,è¯¾å;
-    JButton æŸ¥è¯¢è¯¾ç¨‹;
-    JTextField è¯¾å·1,å­¦å·1,æˆç»©;
-    JButton æŸ¥è¯¢é€‰è¯¾;
+public class Search extends JPanel implements ActionListener {//ÒÔÈÎÒâÌõ¼şÄ£ºı²éÕÒÏà¹ØµÄ±í
+    JTextField  Ñ§ºÅ,ĞÕÃû,Ïµ±ğ,ĞÔ±ğ;
+    JButton ²éÑ¯Ñ§Éú;
+    JTextField ¿ÎºÅ,¿ÎÃû;
+    JButton ²éÑ¯¿Î³Ì;
+    JTextField ¿ÎºÅ1,Ñ§ºÅ1,³É¼¨;
+    JButton ²éÑ¯Ñ¡¿Î;
     public Search() {
-        å­¦å· = new JTextField(10);
-        å§“å = new JTextField(10);
-        ç³»åˆ« = new JTextField(10);
-        æ€§åˆ« = new JTextField(10);
-        æŸ¥è¯¢å­¦ç”Ÿ = new JButton("æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯");
-        æŸ¥è¯¢å­¦ç”Ÿ.addActionListener(this); // æ·»åŠ ç›‘å¬å™¨
-        è¯¾å· = new JTextField(10);
-        è¯¾å = new JTextField(10);
-        æŸ¥è¯¢è¯¾ç¨‹ = new JButton("æŸ¥è¯¢è¯¾ç¨‹ä¿¡æ¯");
-        æŸ¥è¯¢è¯¾ç¨‹.addActionListener(this); // æ·»åŠ ç›‘å¬å™¨
-        è¯¾å·1 = new JTextField(10);
-        å­¦å·1 = new JTextField(10);
-        æˆç»© = new JTextField(10);
-        æŸ¥è¯¢é€‰è¯¾ = new JButton("æŸ¥è¯¢é€‰è¯¾ä¿¡æ¯");
-        æŸ¥è¯¢é€‰è¯¾.addActionListener(this); // æ·»åŠ ç›‘å¬å™¨
-        Box box1 = Box.createHorizontalBox();// æ¨ªæ”¾box
+        Ñ§ºÅ = new JTextField(10);
+        ĞÕÃû = new JTextField(10);
+        Ïµ±ğ = new JTextField(10);
+        ĞÔ±ğ = new JTextField(10);
+        ²éÑ¯Ñ§Éú = new JButton("²éÑ¯Ñ§ÉúĞÅÏ¢");
+        ²éÑ¯Ñ§Éú.addActionListener(this); // Ìí¼Ó¼àÌıÆ÷
+        ¿ÎºÅ = new JTextField(10);
+        ¿ÎÃû = new JTextField(10);
+        ²éÑ¯¿Î³Ì = new JButton("²éÑ¯¿Î³ÌĞÅÏ¢");
+        ²éÑ¯¿Î³Ì.addActionListener(this); // Ìí¼Ó¼àÌıÆ÷
+        ¿ÎºÅ1 = new JTextField(10);
+        Ñ§ºÅ1 = new JTextField(10);
+        ³É¼¨ = new JTextField(10);
+        ²éÑ¯Ñ¡¿Î = new JButton("²éÑ¯Ñ¡¿ÎĞÅÏ¢");
+        ²éÑ¯Ñ¡¿Î.addActionListener(this); // Ìí¼Ó¼àÌıÆ÷
+        Box box1 = Box.createHorizontalBox();// ºá·Åbox
         Box box2 = Box.createHorizontalBox();
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
         Box box5 = Box.createHorizontalBox();
         Box box6 = Box.createHorizontalBox();
-        box1.add(new JLabel("å­¦å·:", JLabel.CENTER));
-        box1.add(å­¦å·);
-        box1.add(new JLabel("å§“å:", JLabel.CENTER));
-        box1.add(å§“å);
-        box1.add(new JLabel("ç³»åˆ«:", JLabel.CENTER));
-        box1.add(ç³»åˆ«);
-        box1.add(new JLabel("æ€§åˆ«:", JLabel.CENTER));
-        box1.add(æ€§åˆ«);
-        box2.add(æŸ¥è¯¢å­¦ç”Ÿ);
-        box3.add(new JLabel("è¯¾å·:", JLabel.CENTER));
-        box3.add(è¯¾å·);
-        box3.add(new JLabel("è¯¾å:", JLabel.CENTER));
-        box3.add(è¯¾å);
-        box4.add(æŸ¥è¯¢è¯¾ç¨‹);
-        box5.add(new JLabel("è¯¾å·:", JLabel.CENTER));
-        box5.add(è¯¾å·1);
-        box5.add(new JLabel("å­¦å·:", JLabel.CENTER));
-        box5.add(å­¦å·1);
-        box5.add(new JLabel("æˆç»©:", JLabel.CENTER));
-        box5.add(æˆç»©);
-        box6.add(æŸ¥è¯¢é€‰è¯¾);
-        Box boxH1 = Box.createVerticalBox();// ç«–æ”¾box
+        box1.add(new JLabel("Ñ§ºÅ:", JLabel.CENTER));
+        box1.add(Ñ§ºÅ);
+        box1.add(new JLabel("ĞÕÃû:", JLabel.CENTER));
+        box1.add(ĞÕÃû);
+        box1.add(new JLabel("Ïµ±ğ:", JLabel.CENTER));
+        box1.add(Ïµ±ğ);
+        box1.add(new JLabel("ĞÔ±ğ:", JLabel.CENTER));
+        box1.add(ĞÔ±ğ);
+        box2.add(²éÑ¯Ñ§Éú);
+        box3.add(new JLabel("¿ÎºÅ:", JLabel.CENTER));
+        box3.add(¿ÎºÅ);
+        box3.add(new JLabel("¿ÎÃû:", JLabel.CENTER));
+        box3.add(¿ÎÃû);
+        box4.add(²éÑ¯¿Î³Ì);
+        box5.add(new JLabel("¿ÎºÅ:", JLabel.CENTER));
+        box5.add(¿ÎºÅ1);
+        box5.add(new JLabel("Ñ§ºÅ:", JLabel.CENTER));
+        box5.add(Ñ§ºÅ1);
+        box5.add(new JLabel("³É¼¨:", JLabel.CENTER));
+        box5.add(³É¼¨);
+        box6.add(²éÑ¯Ñ¡¿Î);
+        Box boxH1 = Box.createVerticalBox();// Êú·Åbox
         boxH1.add(box1);
         boxH1.add(box2);
         boxH1.add(Box.createVerticalGlue());
@@ -86,53 +86,53 @@ public class Search extends JPanel implements ActionListener {//ä»¥ä»»æ„æ¡ä»¶æ
             ResultSet rs=null;
             getSC getsc=null;
             getC getc=null;
-            getStu getstu=null; //å®ä¾‹åŒ–ç±»
-            if (e.getSource() == æŸ¥è¯¢å­¦ç”Ÿ) {
-                if(å­¦å·.getText().equals("")&&å§“å.getText().equals("")&&ç³»åˆ«.getText().equals("")&&æ€§åˆ«.getText().equals(""))
+            getStu getstu=null; //ÊµÀı»¯Àà
+            if (e.getSource() == ²éÑ¯Ñ§Éú) {
+                if(Ñ§ºÅ.getText().equals("")&&ĞÕÃû.getText().equals("")&&Ïµ±ğ.getText().equals("")&&ĞÔ±ğ.getText().equals(""))
                 {
                     sql="select * from student";
                 }
                 else
                 {
-                    sql="select * from student where Sno like '%"+å­¦å·.getText()+"%' or Sname like '%"+å§“å.getText()+"%' and Sdept like '%"+ç³»åˆ«.getText()+"%' and Ssex like '%"+æ€§åˆ«.getText()+"%'";
+                    sql="select * from student where Sno like '%"+Ñ§ºÅ.getText()+"%' or Sname like '%"+ĞÕÃû.getText()+"%' and Sdept like '%"+Ïµ±ğ.getText()+"%' and Ssex like '%"+ĞÔ±ğ.getText()+"%'";
                 }
                 getstu=new getStu(sql);
             }
-            else if (e.getSource() == æŸ¥è¯¢è¯¾ç¨‹) {
-                if (è¯¾å·.getText().equals("") && è¯¾å.getText().equals("")) {
+            else if (e.getSource() == ²éÑ¯¿Î³Ì) {
+                if (¿ÎºÅ.getText().equals("") && ¿ÎÃû.getText().equals("")) {
                     sql = "select * from course";
                 } else {
-                    if (è¯¾å·.getText().equals("")) {
-                        sql = "select * from course where Cname like'%" + è¯¾å.getText() + "%'";
+                    if (¿ÎºÅ.getText().equals("")) {
+                        sql = "select * from course where Cname like'%" + ¿ÎÃû.getText() + "%'";
                     } else {
-                        if (ç³»åˆ«.getText().equals("")) {
-                            sql = "select * from course where Cno like'%" + è¯¾å·.getText() + "%'";
+                        if (Ïµ±ğ.getText().equals("")) {
+                            sql = "select * from course where Cno like'%" + ¿ÎºÅ.getText() + "%'";
                         } else {
-                            sql = "select * from course where  Cno like'%" + è¯¾å·.getText() + "%' and Cname like'%" + å§“å.getText() + "%'";
+                            sql = "select * from course where  Cno like'%" + ¿ÎºÅ.getText() + "%' and Cname like'%" + ĞÕÃû.getText() + "%'";
                         }
                     }
                     getc = new getC(sql);
                 }
             }
-            else if(e.getSource() == æŸ¥è¯¢é€‰è¯¾)
+            else if(e.getSource() == ²éÑ¯Ñ¡¿Î)
             {
-                if(è¯¾å·1.getText().equals("")&&å­¦å·1.getText().equals("")&&æˆç»©.getText().equals("")){
+                if(¿ÎºÅ1.getText().equals("")&&Ñ§ºÅ1.getText().equals("")&&³É¼¨.getText().equals("")){
                     sql="select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade from sc,course,student where course.Cno=SC.Cno and student.Sno=sc.Sno";
                 }
                 else{
-                    if(è¯¾å·1.getText().equals("")){
-                        sql="select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade  from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Sname like'%"+å­¦å·1.getText()+"%'";
+                    if(¿ÎºÅ1.getText().equals("")){
+                        sql="select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade  from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Sname like'%"+Ñ§ºÅ1.getText()+"%'";
                     }
                     else{
-                        if(å­¦å·1.getText().equals("")){
-                            sql="select select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade  from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Cname like'%"+è¯¾å·1.getText()+"%'";
+                        if(Ñ§ºÅ1.getText().equals("")){
+                            sql="select select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade  from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Cname like'%"+¿ÎºÅ1.getText()+"%'";
                         }
                         else{
-                            if(æˆç»©.getText().equals("")){
-                                sql="select select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Sname like'%"+å­¦å·1.getText()+"%' and Cname like'%"+è¯¾å·1.getText()+"%'";
+                            if(³É¼¨.getText().equals("")){
+                                sql="select select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Sname like'%"+Ñ§ºÅ1.getText()+"%' and Cname like'%"+¿ÎºÅ1.getText()+"%'";
                             }
                             else{
-                                sql="select select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Sname like'%"+å­¦å·1.getText()+"%' and Cname like'%"+è¯¾å·1.getText()+"%' and course like'%"+æˆç»©.getText()+"%'";
+                                sql="select select sc.Cno,Cname,Ccredit,sc.Sno,Sname,grade from sc,course,student where course.Cno=sc.Cno and student.Sno=sc.Sno and Sname like'%"+Ñ§ºÅ1.getText()+"%' and Cname like'%"+¿ÎºÅ1.getText()+"%' and course like'%"+³É¼¨.getText()+"%'";
                             }
                         }
                     }

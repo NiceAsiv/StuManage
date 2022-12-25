@@ -4,32 +4,32 @@ import java.sql.*;
 import javax.swing.*;
 
 public class getgrade extends JPanel implements ActionListener {
-    JTextField å­¦å·,å§“å,è¯¾å·,è¯¾å,æˆç»©;
-    JButton æŸ¥è¯¢;
+    JTextField Ñ§ºÅ,ĞÕÃû,¿ÎºÅ,¿ÎÃû,³É¼¨;
+    JButton ²éÑ¯;
     public getgrade() {
-        å­¦å· = new JTextField(10);
-        å§“å = new JTextField(10);
-        è¯¾å· = new JTextField(10);
-        è¯¾å = new JTextField(10);
-        æˆç»© = new JTextField(10);
-        æŸ¥è¯¢ = new JButton("æŸ¥è¯¢");
-        æŸ¥è¯¢.addActionListener(this); // æ·»åŠ ç›‘å¬å™¨
-        Box box1 = Box.createHorizontalBox();// æ¨ªæ”¾box
+        Ñ§ºÅ = new JTextField(10);
+        ĞÕÃû = new JTextField(10);
+        ¿ÎºÅ = new JTextField(10);
+        ¿ÎÃû = new JTextField(10);
+        ³É¼¨ = new JTextField(10);
+        ²éÑ¯ = new JButton("²éÑ¯");
+        ²éÑ¯.addActionListener(this); // Ìí¼Ó¼àÌıÆ÷
+        Box box1 = Box.createHorizontalBox();// ºá·Åbox
         Box box2 = Box.createHorizontalBox();
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
-        box1.add(new JLabel("å­¦å·:", JLabel.CENTER));
-        box1.add(å­¦å·);
-        box1.add(new JLabel("å§“å:", JLabel.CENTER));
-        box1.add(å§“å);
-        box2.add(new JLabel("è¯¾å·:", JLabel.CENTER));
-        box2.add(è¯¾å·);
-        box2.add(new JLabel("è¯¾å:", JLabel.CENTER));
-        box2.add(è¯¾å);
-        box3.add(new JLabel("æˆç»©:", JLabel.CENTER));
-        box3.add(æˆç»©);
-        box4.add(æŸ¥è¯¢);
-        Box boxH = Box.createVerticalBox();// ç«–æ”¾box
+        box1.add(new JLabel("Ñ§ºÅ:", JLabel.CENTER));
+        box1.add(Ñ§ºÅ);
+        box1.add(new JLabel("ĞÕÃû:", JLabel.CENTER));
+        box1.add(ĞÕÃû);
+        box2.add(new JLabel("¿ÎºÅ:", JLabel.CENTER));
+        box2.add(¿ÎºÅ);
+        box2.add(new JLabel("¿ÎÃû:", JLabel.CENTER));
+        box2.add(¿ÎÃû);
+        box3.add(new JLabel("³É¼¨:", JLabel.CENTER));
+        box3.add(³É¼¨);
+        box4.add(²éÑ¯);
+        Box boxH = Box.createVerticalBox();// Êú·Åbox
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
@@ -42,24 +42,24 @@ public class getgrade extends JPanel implements ActionListener {
         validate();
     }
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == æŸ¥è¯¢) {
-            if (å­¦å·.getText().equals("") || å§“å.getText().equals("") || è¯¾å·.getText().equals("") || è¯¾å.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "å­¦å·æˆ–å§“åæˆ–è¯¾ç¨‹æˆ–è¯¾åä¸èƒ½ä¸ºç©º");
+        if (e.getSource() == ²éÑ¯) {
+            if (Ñ§ºÅ.getText().equals("") || ĞÕÃû.getText().equals("") || ¿ÎºÅ.getText().equals("") || ¿ÎÃû.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Ñ§ºÅ»òĞÕÃû»ò¿Î³Ì»ò¿ÎÃû²»ÄÜÎª¿Õ");
             } else {
-                String sql = "select * from course,sc,student where sc.Sno=student.Sno and course.Cno=sc.Cno and student.Sno='" + å­¦å·.getText() + "' and course.Cno='" + è¯¾å·.getText() + "'";
+                String sql = "select * from course,sc,student where sc.Sno=student.Sno and course.Cno=sc.Cno and student.Sno='" + Ñ§ºÅ.getText() + "' and course.Cno='" + ¿ÎºÅ.getText() + "'";
               System.out.println(sql);
                 try {
                     Connection con = Tools.CONN();
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(sql);
                     if (rs.next()) {
-                        å§“å.setText(rs.getString("Sname").trim());
-                        è¯¾å.setText(rs.getString("Cname").trim());
-                        æˆç»©.setText(rs.getString("grade").trim());
-                        å­¦å·.setText(rs.getString("Sno").trim());
-                        è¯¾å·.setText(rs.getString("Cno").trim());
+                        ĞÕÃû.setText(rs.getString("Sname").trim());
+                        ¿ÎÃû.setText(rs.getString("Cname").trim());
+                        ³É¼¨.setText(rs.getString("grade").trim());
+                        Ñ§ºÅ.setText(rs.getString("Sno").trim());
+                        ¿ÎºÅ.setText(rs.getString("Cno").trim());
                     } else {
-                        JOptionPane.showMessageDialog(this, "æ²¡æœ‰è¯¥å­¦ç”Ÿæˆ–è¯¥è¯¾ç¨‹");
+                        JOptionPane.showMessageDialog(this, "Ã»ÓĞ¸ÃÑ§Éú»ò¸Ã¿Î³Ì");
                     }
 
 

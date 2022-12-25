@@ -5,27 +5,27 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class AddSC extends JPanel implements ActionListener {
-    JTextField è¯¾å·, å­¦å·, æˆç»©;
-    JButton å½•å…¥;
+    JTextField ¿ÎºÅ, Ñ§ºÅ, ³É¼¨;
+    JButton Â¼Èë;
 
     public AddSC() {
-        è¯¾å· = new JTextField(10);
-        å­¦å· = new JTextField(10);
-        æˆç»© = new JTextField(10);
-        å½•å…¥ = new JButton("å½•å…¥");
-        å½•å…¥.addActionListener(this); // æ·»åŠ ç›‘å¬å™¨
-        Box box1 = Box.createHorizontalBox();// æ¨ªæ”¾box
+        ¿ÎºÅ = new JTextField(10);
+        Ñ§ºÅ = new JTextField(10);
+        ³É¼¨ = new JTextField(10);
+        Â¼Èë = new JButton("Â¼Èë");
+        Â¼Èë.addActionListener(this); // Ìí¼Ó¼àÌıÆ÷
+        Box box1 = Box.createHorizontalBox();// ºá·Åbox
         Box box2 = Box.createHorizontalBox();
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
-        box1.add(new JLabel("è¯¾å·:"));
-        box1.add(è¯¾å·);
-        box2.add(new JLabel("å­¦å·:"));
-        box2.add(å­¦å·);
-        box3.add(new JLabel("æˆç»©:"));
-        box3.add(æˆç»©);
-        box4.add(å½•å…¥);
-        Box boxH = Box.createVerticalBox();// ç«–æ”¾box
+        box1.add(new JLabel("¿ÎºÅ:"));
+        box1.add(¿ÎºÅ);
+        box2.add(new JLabel("Ñ§ºÅ:"));
+        box2.add(Ñ§ºÅ);
+        box3.add(new JLabel("³É¼¨:"));
+        box3.add(³É¼¨);
+        box4.add(Â¼Èë);
+        Box boxH = Box.createVerticalBox();// Êú·Åbox
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
@@ -40,15 +40,15 @@ public class AddSC extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == å½•å…¥) {
-            if (è¯¾å·.getText().equals("") || å­¦å·.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "è¯¾å·æˆ–å­¦å·æˆ–æˆç»©ä¸èƒ½ä¸ºç©ºï¼");
+        if (e.getSource() == Â¼Èë) {
+            if (¿ÎºÅ.getText().equals("") || Ñ§ºÅ.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "¿ÎºÅ»òÑ§ºÅ»ò³É¼¨²»ÄÜÎª¿Õ£¡");
             } else {
                 ResultSet rs1 = null, rs2 = null, rs3 = null, rs4 = null;
-                String sql1 = "select * from course where Cno='" + è¯¾å·.getText() + "'";
-                String sql2 = "select * from student where Sno='" + å­¦å·.getText() + "'";
-                String sql3 = "select * from sc where Cno='" + è¯¾å·.getText() + "' and Sno='" + å­¦å·.getText() + "'";
-                String sql4 = "insert into sc values('" + è¯¾å·.getText() + "','" + å­¦å·.getText() + "','" + æˆç»©.getText() + "')";
+                String sql1 = "select * from course where Cno='" + ¿ÎºÅ.getText() + "'";
+                String sql2 = "select * from student where Sno='" + Ñ§ºÅ.getText() + "'";
+                String sql3 = "select * from sc where Cno='" + ¿ÎºÅ.getText() + "' and Sno='" + Ñ§ºÅ.getText() + "'";
+                String sql4 = "insert into sc values('" + ¿ÎºÅ.getText() + "','" + Ñ§ºÅ.getText() + "','" + ³É¼¨.getText() + "')";
 //                System.out.println(sql1);
 //                System.out.println(sql2);
 //                System.out.println(sql3);
@@ -64,23 +64,23 @@ public class AddSC extends JPanel implements ActionListener {
                             rs3=stmt.executeQuery(sql3);
                             if(rs3.next())
                             {
-                                JOptionPane.showMessageDialog(this,"æ‚¨å·²é€‰æ‹©è¯¥è¯¾ç¨‹æ— æ³•ç»§ç»­æ·»åŠ ");
+                                JOptionPane.showMessageDialog(this,"ÄúÒÑÑ¡Ôñ¸Ã¿Î³ÌÎŞ·¨¼ÌĞøÌí¼Ó");
 
                             }
                             else
                             {
                                 stmt.executeUpdate(sql4);
-                                JOptionPane.showMessageDialog(this,"æ·»åŠ æˆåŠŸ");
+                                JOptionPane.showMessageDialog(this,"Ìí¼Ó³É¹¦");
                             }
                             rs3.close();
                         }
                         else {
-                            JOptionPane.showMessageDialog(this,"è¯¥å­¦ç”Ÿä¸å­˜åœ¨ï¼Œæ— æ³•æ·»åŠ ");
+                            JOptionPane.showMessageDialog(this,"¸ÃÑ§Éú²»´æÔÚ£¬ÎŞ·¨Ìí¼Ó");
                         }
                         rs2.close();
                     }
                     else {
-                        JOptionPane.showMessageDialog(this,"è¯¥è¯¾ç¨‹ä¸å­˜åœ¨ï¼Œæ— æ³•æ·»åŠ ");
+                        JOptionPane.showMessageDialog(this,"¸Ã¿Î³Ì²»´æÔÚ£¬ÎŞ·¨Ìí¼Ó");
                     }
                     rs1.close();
                     stmt.close();

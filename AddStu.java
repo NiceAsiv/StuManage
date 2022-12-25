@@ -5,32 +5,32 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 class AddStu extends JPanel implements ActionListener {
-    JTextField å­¦å·, å§“å, ç³»åˆ«,æ€§åˆ«;
-    JButton æ·»åŠ ;
+    JTextField Ñ§ºÅ, ĞÕÃû, Ïµ±ğ,ĞÔ±ğ;
+    JButton Ìí¼Ó;
 
     public AddStu() {
         setLayout(new FlowLayout());
-        å­¦å· = new JTextField(12);
-        å§“å = new JTextField(12);
-        ç³»åˆ« = new JTextField(12);
-        æ€§åˆ« = new JTextField(12);
-        æ·»åŠ  = new JButton("æ·»åŠ ");
-        æ·»åŠ .addActionListener(this);
+        Ñ§ºÅ = new JTextField(12);
+        ĞÕÃû = new JTextField(12);
+        Ïµ±ğ = new JTextField(12);
+        ĞÔ±ğ = new JTextField(12);
+        Ìí¼Ó = new JButton("Ìí¼Ó");
+        Ìí¼Ó.addActionListener(this);
         Box box1 = Box.createHorizontalBox();
         Box box2 = Box.createHorizontalBox();
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
         Box box5 = Box.createHorizontalBox();
-        box1.add(new JLabel("å­¦å·:"));
-        box1.add(å­¦å·);
-        box2.add(new JLabel("å§“å:"));
-        box2.add(å§“å);
-        box3.add(new JLabel("ç³»åˆ«:"));
-        box3.add(ç³»åˆ«);
-        box4.add(new JLabel("æ€§åˆ«:"));
-        box4.add(æ€§åˆ«);
-        box5.add(æ·»åŠ );// æ·»åŠ åˆ°çª—å£ä¸­
-        Box boxH = Box.createVerticalBox();// åˆ›å»ºå‚ç›´ç›’å­
+        box1.add(new JLabel("Ñ§ºÅ:"));
+        box1.add(Ñ§ºÅ);
+        box2.add(new JLabel("ĞÕÃû:"));
+        box2.add(ĞÕÃû);
+        box3.add(new JLabel("Ïµ±ğ:"));
+        box3.add(Ïµ±ğ);
+        box4.add(new JLabel("ĞÔ±ğ:"));
+        box4.add(ĞÔ±ğ);
+        box5.add(Ìí¼Ó);// Ìí¼Óµ½´°¿ÚÖĞ
+        Box boxH = Box.createVerticalBox();// ´´½¨´¹Ö±ºĞ×Ó
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
@@ -46,24 +46,24 @@ class AddStu extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == æ·»åŠ ) {
-            if (å­¦å·.getText().equals("") || å§“å.getText().equals("") || ç³»åˆ«.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "å­¦å·æˆ–å§“åæˆ–ç³»åˆ«ä¸èƒ½ä¸ºç©º");
+        if (e.getSource() == Ìí¼Ó) {
+            if (Ñ§ºÅ.getText().equals("") || ĞÕÃû.getText().equals("") || Ïµ±ğ.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Ñ§ºÅ»òĞÕÃû»òÏµ±ğ²»ÄÜÎª¿Õ");
             }
             else {
-                String sql1 = "select * from student where Sno='" + å­¦å·.getText() + "'";
-                String sql = "insert into student values('" + å­¦å·.getText() + "','" + å§“å.getText() + "','" + ç³»åˆ«.getText() +
-                        "','" + æ€§åˆ«.getText() + "')";
+                String sql1 = "select * from student where Sno='" + Ñ§ºÅ.getText() + "'";
+                String sql = "insert into student values('" + Ñ§ºÅ.getText() + "','" + ĞÕÃû.getText() + "','" + Ïµ±ğ.getText() +
+                        "','" + ĞÔ±ğ.getText() + "')";
                 ResultSet rs = null;
                 try {
                     Connection con = Tools.CONN();
                     Statement stmt = con.createStatement();
                     rs = stmt.executeQuery(sql1);
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(this, "è¯¥å­¦å·å·²å­˜åœ¨ï¼Œæ— æ³•æ·»åŠ ");
+                        JOptionPane.showMessageDialog(this, "¸ÃÑ§ºÅÒÑ´æÔÚ£¬ÎŞ·¨Ìí¼Ó");
                     } else {
                         stmt.executeUpdate(sql);
-                        JOptionPane.showMessageDialog(this, "æ·»åŠ æˆåŠŸ");
+                        JOptionPane.showMessageDialog(this, "Ìí¼Ó³É¹¦");
                     }
                     rs.close();
                     stmt.close();

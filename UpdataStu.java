@@ -4,42 +4,41 @@ import java.sql.*;
 
 import javax.swing.*;
 
-import com.mysql.cj.xdevapi.Result;
 
 public class UpdataStu extends JPanel implements ActionListener {
     String save = null;
-    JTextField å­¦å·1, å­¦å·, å§“å, ç³»åˆ«, æ€§åˆ«;
-    JButton ä¿®æ”¹, æŸ¥è¯¢;
+    JTextField Ñ§ºÅ1, Ñ§ºÅ, ĞÕÃû, Ïµ±ğ, ĞÔ±ğ;
+    JButton ĞŞ¸Ä, ²éÑ¯;
 
     public UpdataStu() {
-        å­¦å·1 = new JTextField(10);
-        å­¦å· = new JTextField(10);
-        å§“å = new JTextField(10);
-        ç³»åˆ« = new JTextField(10);
-        æ€§åˆ« = new JTextField(10);
-        ä¿®æ”¹ = new JButton("ä¿®æ”¹");
-        æŸ¥è¯¢ = new JButton("æŸ¥æ‰¾");
-        Box box1 = Box.createHorizontalBox();//æ¨ªå‘æ’åˆ—
+        Ñ§ºÅ1 = new JTextField(10);
+        Ñ§ºÅ = new JTextField(10);
+        ĞÕÃû = new JTextField(10);
+        Ïµ±ğ = new JTextField(10);
+        ĞÔ±ğ = new JTextField(10);
+        ĞŞ¸Ä = new JButton("ĞŞ¸Ä");
+        ²éÑ¯ = new JButton("²éÕÒ");
+        Box box1 = Box.createHorizontalBox();//ºáÏòÅÅÁĞ
         Box box2 = Box.createHorizontalBox();
         Box box3 = Box.createHorizontalBox();
         Box box4 = Box.createHorizontalBox();
         Box box5 = Box.createHorizontalBox();
         Box box6 = Box.createHorizontalBox();
-        box1.add(new JLabel("å­¦å·"));
-        box1.add(å­¦å·);
-        box2.add(new JLabel("å§“å"));
-        box2.add(å§“å);
-        box3.add(new JLabel("ç³»åˆ«"));
-        box3.add(ç³»åˆ«);
-        box4.add(new JLabel("æ€§åˆ«:"));
-        box4.add(æ€§åˆ«);
-        box5.add(ä¿®æ”¹);
-        box6.add(new JLabel("å­¦å·:"));
-        box6.add(å­¦å·1);
-        box6.add(æŸ¥è¯¢);
-        ä¿®æ”¹.addActionListener(this);
-        æŸ¥è¯¢.addActionListener(this);
-        Box boxH = Box.createVerticalBox();//æ¨ªå‘æ’åˆ—
+        box1.add(new JLabel("Ñ§ºÅ"));
+        box1.add(Ñ§ºÅ);
+        box2.add(new JLabel("ĞÕÃû"));
+        box2.add(ĞÕÃû);
+        box3.add(new JLabel("Ïµ±ğ"));
+        box3.add(Ïµ±ğ);
+        box4.add(new JLabel("ĞÔ±ğ:"));
+        box4.add(ĞÔ±ğ);
+        box5.add(ĞŞ¸Ä);
+        box6.add(new JLabel("Ñ§ºÅ:"));
+        box6.add(Ñ§ºÅ1);
+        box6.add(²éÑ¯);
+        ĞŞ¸Ä.addActionListener(this);
+        ²éÑ¯.addActionListener(this);
+        Box boxH = Box.createVerticalBox();//ºáÏòÅÅÁĞ
         boxH.add(box1);
         boxH.add(box2);
         boxH.add(box3);
@@ -58,25 +57,25 @@ public class UpdataStu extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String sql1 = "select * from student where Sno='" + å­¦å·1.getText() + "'";
+        String sql1 = "select * from student where Sno='" + Ñ§ºÅ1.getText() + "'";
         String sql = null;
         ResultSet rs = null, rs1 = null;
-        if (e.getSource() == æŸ¥è¯¢) {
-            if (å­¦å·1.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "è¯·å¡«å†™æŸ¥è¯¢çš„å­¦å·ï¼");
+        if (e.getSource() == ²éÑ¯) {
+            if (Ñ§ºÅ1.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "ÇëÌîĞ´²éÑ¯µÄÑ§ºÅ£¡");
             } else {
                 try {
                     Connection conn = Tools.CONN();
                     Statement stmt = conn.createStatement();
                     rs1 = stmt.executeQuery(sql1);
                     if (rs1.next()) {
-                        å­¦å·.setText(rs1.getString("Sno"));
-                        å§“å.setText(rs1.getString("Sname"));
-                        ç³»åˆ«.setText(rs1.getString("Sdept"));
-                        æ€§åˆ«.setText(rs1.getString("Ssex"));
-                        save = å­¦å·1.getText();
+                        Ñ§ºÅ.setText(rs1.getString("Sno"));
+                        ĞÕÃû.setText(rs1.getString("Sname"));
+                        Ïµ±ğ.setText(rs1.getString("Sdept"));
+                        ĞÔ±ğ.setText(rs1.getString("Ssex"));
+                        save = Ñ§ºÅ1.getText();
                     } else {
-                        JOptionPane.showMessageDialog(this, "æ²¡æœ‰æŸ¥è¯¢åˆ°è¯¥å­¦å·çš„å­¦ç”Ÿä¿¡æ¯ï¼");
+                        JOptionPane.showMessageDialog(this, "Ã»ÓĞ²éÑ¯µ½¸ÃÑ§ºÅµÄÑ§ÉúĞÅÏ¢£¡");
                     }
                     stmt.close();
                     rs1.close();
@@ -84,21 +83,21 @@ public class UpdataStu extends JPanel implements ActionListener {
                     System.out.print("SQL Exception occur.Message is:" + e1.getMessage());
                 }
             }
-        } else if (e.getSource() == ä¿®æ”¹) {
+        } else if (e.getSource() == ĞŞ¸Ä) {
             if (save == null) {
-                JOptionPane.showMessageDialog(this, "è¯·å…ˆæŸ¥è¯¢è¦ä¿®æ”¹çš„å­¦ç”Ÿä¿¡æ¯ï¼");
+                JOptionPane.showMessageDialog(this, "ÇëÏÈ²éÑ¯ÒªĞŞ¸ÄµÄÑ§ÉúĞÅÏ¢£¡");
             } else {
-                if (å­¦å·.getText().equals("") || å§“å.getText().equals("") || ç³»åˆ«.getText().equals("") || æ€§åˆ«.getText().equals("")) {
-                    JOptionPane.showMessageDialog(this, "è¯·å¡«å†™å®Œæ•´çš„ä¿¡æ¯ï¼");
+                if (Ñ§ºÅ.getText().equals("") || ĞÕÃû.getText().equals("") || Ïµ±ğ.getText().equals("") || ĞÔ±ğ.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "ÇëÌîĞ´ÍêÕûµÄĞÅÏ¢£¡");
                 } else {
-                    if (save.trim().equals(å­¦å·.getText().trim())) {
-                        sql = "update student set Sno='" + å­¦å·.getText() + "',Sname='" + å§“å.getText() + "',Sdept='" + ç³»åˆ«.getText() + "',Ssex='" + æ€§åˆ«.getText() + "' where Sno='" + save + "'";
+                    if (save.trim().equals(Ñ§ºÅ.getText().trim())) {
+                        sql = "update student set Sno='" + Ñ§ºÅ.getText() + "',Sname='" + ĞÕÃû.getText() + "',Sdept='" + Ïµ±ğ.getText() + "',Ssex='" + ĞÔ±ğ.getText() + "' where Sno='" + save + "'";
                         System.out.println(sql);
                         try {
                             Connection conn = Tools.CONN();
                             Statement stmt = conn.createStatement();
                             stmt.executeUpdate(sql);
-                            JOptionPane.showMessageDialog(this, "ä¿®æ”¹æˆåŠŸï¼");
+                            JOptionPane.showMessageDialog(this, "ĞŞ¸Ä³É¹¦£¡");
                             save = null;
                             conn.close();
                             stmt.close();
@@ -106,20 +105,20 @@ public class UpdataStu extends JPanel implements ActionListener {
                             System.out.print("SQL Exception occur.Message is:" + e1.getMessage());
                         }
                     } else {
-                        sql1 = "select * from student where Sno='" + å­¦å·.getText() + "'";
+                        sql1 = "select * from student where Sno='" + Ñ§ºÅ.getText() + "'";
                         try {
                             Connection conn = Tools.CONN();
                             Statement stmt = conn.createStatement();
                             rs = stmt.executeQuery(sql1);
                             if (rs.next()) {
-                                JOptionPane.showMessageDialog(this, "è¦ä¿®æ”¹çš„å­¦å·ä¸å¦å¤–ä¸€ä½åŒå­¦é‡å¤ï¼");
+                                JOptionPane.showMessageDialog(this, "ÒªĞŞ¸ÄµÄÑ§ºÅÓëÁíÍâÒ»Î»Í¬Ñ§ÖØ¸´£¡");
                             } else {
-                                sql = "update student set Sno='" + å­¦å·.getText() + "',Sname='" + å§“å.getText() + "',Sdept='" + ç³»åˆ«.getText() + "',Ssex='" + æ€§åˆ«.getText() + "' where Sno='" + save + "'";
+                                sql = "update student set Sno='" + Ñ§ºÅ.getText() + "',Sname='" + ĞÕÃû.getText() + "',Sdept='" + Ïµ±ğ.getText() + "',Ssex='" + ĞÔ±ğ.getText() + "' where Sno='" + save + "'";
                                 try {
                                     Connection conn1 = Tools.CONN();
                                     Statement stmt1 = conn1.createStatement();
                                     stmt1.executeUpdate(sql);
-                                    JOptionPane.showMessageDialog(this, "ä¿®æ”¹æˆåŠŸï¼");
+                                    JOptionPane.showMessageDialog(this, "ĞŞ¸Ä³É¹¦£¡");
                                     save = null;
                                     conn1.close();
                                     stmt1.close();

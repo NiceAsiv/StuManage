@@ -11,14 +11,14 @@ public class getSC extends JFrame{
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     public getSC(String sql1) {
-        super("鏌ヨ璇剧▼淇℃伅");
+        super("查询课程信息");
         columnNames = new Vector();
-        columnNames.add("璇惧彿");
-        columnNames.add("璇惧悕");
-        columnNames.add("瀛﹀垎");
-        columnNames.add("瀛﹀彿");
-        columnNames.add("濮撳悕");
-        columnNames.add("鎴愮哗");
+        columnNames.add("课号");
+        columnNames.add("课名");
+        columnNames.add("学分");
+        columnNames.add("学号");
+        columnNames.add("姓名");
+        columnNames.add("成绩");
         rowData = new Vector();
         sql = sql1;
         try {
